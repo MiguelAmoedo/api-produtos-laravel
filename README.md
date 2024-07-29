@@ -27,7 +27,7 @@ Este é um sistema de gestão de produtos desenvolvido com Laravel no backend e 
 
 1. Clone o repositório:
    ```bash
-   git clone [https://github.com/seu-usuario/nome-do-repositorio.git](https://github.com/MiguelAmoedo/api-produtos-laravel.git)
+   git clone https://github.com/MiguelAmoedo/api-produtos-laravel
    cd nome-do-repositorio
    ```
 
