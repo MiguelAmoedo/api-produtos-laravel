@@ -102,7 +102,7 @@ Utilizamos JWT para autenticação de usuários. As rotas são as seguintes:
 
 ## Considerações Finais
 
-Este projeto foi desenvolvido como um desafia, para proporcionar um sistema de autenticação seguro utilizando JWT. Sinta-se à vontade para contribuir e melhorar este projeto.
+Este projeto foi desenvolvido como um desafio, para proporcionar um sistema de autenticação seguro utilizando JWT. Sinta-se à vontade para contribuir e melhorar este projeto.
 
 ---
 
