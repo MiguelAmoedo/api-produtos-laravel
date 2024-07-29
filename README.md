@@ -102,11 +102,7 @@ Utilizamos JWT para autenticação de usuários. As rotas são as seguintes:
 
 ## Considerações Finais
 
-Este projeto foi desenvolvido para facilitar a gestão de produtos e categorias, além de proporcionar um sistema de autenticação seguro utilizando JWT. Sinta-se à vontade para contribuir e melhorar este projeto.
-
-## Licença
-
-Este projeto está licenciado sob a [MIT License](LICENSE).
+Este projeto foi desenvolvido como um desafia, para proporcionar um sistema de autenticação seguro utilizando JWT. Sinta-se à vontade para contribuir e melhorar este projeto.
 
 ---
 
