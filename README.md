@@ -38,7 +38,7 @@ bash
 
 
 3. Configure o banco de dados no arquivo .env:
-   
+"  
 env
    DB_CONNECTION=mysql
    DB_HOST=127.0.0.1
