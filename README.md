@@ -1,5 +1,3 @@
-
-
 # Sistema de Gestão de Produtos
 
 ## Visão Geral
@@ -46,25 +44,47 @@ Este é um sistema de gestão de produtos desenvolvido com Laravel no backend e 
    DB_PORT=3306
    DB_DATABASE=dev
    DB_USERNAME=root
-   DB_PASSWORD=
+   DB_PASSWORD=sem
    ```
 
-4. Execute as migrações:
+4. Apague o cache das configurações:
+   ```bash
+   php artisan config:cache
+   ```
+
+5. Execute as migrações:
    ```bash
    php artisan migrate
    ```
 
-5. Inicie o servidor:
+6. Inicie o servidor:
    ```bash
    php artisan serve
    ```
-
-
 
 ## Rotas da API
 
 A API está disponível na URL: `http://127.0.0.1:8000/api/`
 
+### Categorias
+
+- **Cadastrar primeiro Categoria:** `POST /categories`
+  - Cadastra uma nova categoria.
+  - Exemplo de request:
+    ```json
+    {
+      "name": "xbox"
+    }
+    ```
+  - Exemplo de response:
+    ```json
+    {
+      "name": "xbox",
+      "updated_at": "2024-07-30T14:49:19.000000Z",
+      "created_at": "2024-07-30T14:49:19.000000Z",
+      "id": 1
+    }
+    ```
 ### Produtos
 
 - **Listar Produtos:** `GET /products`
@@ -72,6 +92,39 @@ A API está disponível na URL: `http://127.0.0.1:8000/api/`
 
 - **Cadastrar Produto:** `POST /products`
   - Cadastra um novo produto.
+  - Exemplo de request:
+    ```json
+    {
+      "name": "produto1",
+      "description": "produto top",
+      "price": "123",
+      "expiry_date": "2020-10-10",
+      "image": "url",
+      "category_id": 1
+    }
+    ```
+  - Exemplo de response:
+    ```json
+    {
+      "product": {
+        "name": "produto1",
+        "description": "produto top",
+        "price": "123",
+        "expiry_date": "2020-10-10",
+        "image": "url",
+        "category_id": 1,
+        "updated_at": "2024-07-30T14:53:10.000000Z",
+        "created_at": "2024-07-30T14:53:10.000000Z",
+        "id": 1,
+        "category": {
+          "id": 1,
+          "name": "xbox",
+          "created_at": "2024-07-30T14:49:19.000000Z",
+          "updated_at": "2024-07-30T14:49:19.000000Z"
+        }
+      }
+    }
+    ```
 
 - **Atualizar Produto:** `PUT /products/{id}`
   - Atualiza um produto existente.
@@ -79,10 +132,7 @@ A API está disponível na URL: `http://127.0.0.1:8000/api/`
 - **Deletar Produto:** `DELETE /products/{id}`
   - Deleta um produto existente.
 
-### Categorias
 
-- **Cadastrar Categoria:** `POST /categories`
-  - Cadastra uma nova categoria.
 
 ### Sistema de Autenticação (JWT)
 
