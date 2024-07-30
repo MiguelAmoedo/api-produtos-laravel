@@ -1,3 +1,5 @@
+
+
 ## Visão Geral
 
 Este é um sistema de gestão de produtos desenvolvido com Laravel no backend e Vue.js no frontend. Ele inclui funcionalidades de CRUD para produtos e categorias, além de um sistema de autenticação utilizando JWT.
@@ -7,7 +9,7 @@ Este é um sistema de gestão de produtos desenvolvido com Laravel no backend e 
 - **Backend:** Laravel 9.0 ou superior com PHP 8.0 ou superior
 - **Frontend:** Vue.js 3 com TypeScript, Vite como bundler
 - **Banco de Dados:** MySQL 8.0
-- **Servidor de Desenvolvimento:** XAMPP
+- **Servidor de Desenvolvimento:** XAMPP (opcional, mas recomendado)
 
 ## Configuração do Ambiente de Desenvolvimento
 
@@ -23,89 +25,88 @@ Este é um sistema de gestão de produtos desenvolvido com Laravel no backend e 
 
 1. Clone o repositório:
    
-bash
+   ```bash
    git clone https://github.com/MiguelAmoedo/api-produtos-laravel
    cd nome-do-repositorio
-
+   ```
 
 2. Configure o backend Laravel:
    
-bash
+   ```bash
    cd backend
    composer install
    cp .env.example .env
    php artisan key:generate
+   ```
 
+3. Configure o banco de dados no arquivo `.env`:
 
-3. Configure o banco de dados no arquivo .env: OU copia .envExample
-"  
-env
-   -DB_CONNECTION=mysql
-   -DB_HOST=127.0.0.1
-   -DB_PORT=3306
-   -DB_DATABASE=dev
-   -DB_USERNAME=root
-   -DB_PASSWORD=
-
+   ```
+   DB_CONNECTION=mysql
+   DB_HOST=127.0.0.1
+   DB_PORT=3306
+   DB_DATABASE=dev
+   DB_USERNAME=root
+   DB_PASSWORD=
+   ```
 
 4. Apague o cache das configurações:
    
-bash
+   ```bash
    php artisan config:cache
+   ```
 
-5. Crie no banco uma tabela ou coloque comando abaixo::
+5. Crie a tabela necessária ou aplique o comando abaixo:
    
-bash
-    php artisan make:migration add_dev_to_products_tabl
+   ```bash
+   php artisan make:migration add_dev_to_products_table
+   ```
 
-
-7. Execute as migrações:
+6. Execute as migrações:
    
-bash
+   ```bash
    php artisan migrate
-
+   ```
 
 7. Inicie o servidor:
    
-bash
+   ```bash
    php artisan serve
-
+   ```
 
 ## Rotas da API
 
-A API está disponível na URL: http://127.0.0.1:8000/api/
+A API está disponível na URL: [http://127.0.0.1:8000/api/](http://127.0.0.1:8000/api/)
 
 ### Categorias
 
-- **Cadastrar primeiro Categoria:** POST /categories
+- **Cadastrar Categoria:** `POST /categories`
   - Cadastra uma nova categoria.
   - Exemplo de request:
-    
-json
+    ```json
     {
       "name": "xbox"
     }
-
+    ```
   - Exemplo de response:
-    
-json
+    ```json
     {
       "name": "xbox",
       "updated_at": "2024-07-30T14:49:19.000000Z",
       "created_at": "2024-07-30T14:49:19.000000Z",
       "id": 1
     }
+    ```
 
 ### Produtos
 
-- **Listar Produtos:** GET /products
+- **Listar Produtos:** `GET /products`
   - Lista os produtos com paginação.
 
-- **Cadastrar Produto:** POST /products
+- **Cadastrar Produto:** `POST /products`
   - Cadastra um novo produto.
   - Exemplo de request:
-    
-json
+    ```json
     {
       "name": "produto1",
       "description": "produto top",
@@ -114,10 +115,9 @@ json
       "image": "url",
       "category_id": 1
     }
-
+    ```
   - Exemplo de response:
-    
-json
+    ```json
     {
       "product": {
         "name": "produto1",
@@ -137,19 +137,15 @@ json
         }
       }
     }
+    ```
 
-
-- **Atualizar Produto:** PUT /products/{id}
+- **Atualizar Produto:** `PUT /products/{id}`
   - Atualiza um produto existente.
 
-- **Deletar Produto:** DELETE /products/{id}
+- **Deletar Produto:** `DELETE /products/{id}`
   - Deleta um produto existente.
 
-
-
 ### Sistema de Autenticação (JWT)
-
-Utilizamos JWT para autenticação de usuários. As rotas são as seguintes:
 
 Utilizamos JWT para autenticação de usuários. As rotas são as seguintes:
 
@@ -160,8 +156,8 @@ Utilizamos JWT para autenticação de usuários. As rotas são as seguintes:
     {
       "name": "marcos",
       "email": "marcos@email.com",
-      "password": "passweord123",
-      "password_confirmation": "passweord123"
+      "password": "password123",
+      "password_confirmation": "password123"
     }
     ```
   - Exemplo de response:
@@ -185,7 +181,7 @@ Utilizamos JWT para autenticação de usuários. As rotas são as seguintes:
     ```json
     {
       "email": "marcos@email.com",
-      "password": "passweord123"
+      "password": "password123"
     }
     ```
   - Exemplo de response:
@@ -195,11 +191,10 @@ Utilizamos JWT para autenticação de usuários. As rotas são as seguintes:
     }
     ```
 
-
-- **Logout:** POST /logout
+- **Logout:** `POST /logout`
   - Realiza o logout do usuário autenticado (requer token JWT).
 
-- **Usuário Autenticado:** GET /user
+- **Usuário Autenticado:** `GET /user`
   - Retorna os dados do usuário autenticado (requer token JWT).
 
 ## Considerações Finais
