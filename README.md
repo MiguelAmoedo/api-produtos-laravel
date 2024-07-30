@@ -37,15 +37,15 @@ bash
    php artisan key:generate
 
 
-3. Configure o banco de dados no arquivo .env:
+3. Configure o banco de dados no arquivo .env: OU copia .envExample
 "  
 env
-   DB_CONNECTION=mysql
-   DB_HOST=127.0.0.1
-   DB_PORT=3306
-   DB_DATABASE=dev
-   DB_USERNAME=root
-   DB_PASSWORD=sem
+   -DB_CONNECTION=mysql
+   -DB_HOST=127.0.0.1
+   -DB_PORT=3306
+   -DB_DATABASE=dev
+   -DB_USERNAME=root
+   -DB_PASSWORD=
 
 
 4. Apague o cache das configurações:
