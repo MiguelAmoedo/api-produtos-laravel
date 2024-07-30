@@ -1,6 +1,6 @@
-Claro! Vamos atualizar o `README.md` com as informações adicionais sobre as rotas de autenticação JWT, incluindo exemplos de requests e responses para as rotas de registro e login.
+Parece que você está configurando um projeto Laravel com Vue.js e um sistema de autenticação JWT. Vou ajustar seu README e fornecer detalhes adicionais sobre como adicionar uma coluna `dev` à tabela `products`.
 
-Aqui está a versão atualizada:
+### README Atualizado
 
 ```markdown
 # Sistema de Gestão de Produtos
@@ -14,7 +14,7 @@ Este é um sistema de gestão de produtos desenvolvido com Laravel no backend e 
 - **Backend:** Laravel 9.0 ou superior com PHP 8.0 ou superior
 - **Frontend:** Vue.js 3 com TypeScript, Vite como bundler
 - **Banco de Dados:** MySQL 8.0
-- **Servidor de Desenvolvimento:** XAMPP
+- **Servidor de Desenvolvimento:** XAMPP (opcional, mas recomendado)
 
 ## Configuração do Ambiente de Desenvolvimento
 
@@ -57,19 +57,55 @@ Este é um sistema de gestão de produtos desenvolvido com Laravel no backend e 
    php artisan config:cache
    ```
 
-5. Crie a migração para adicionar a coluna `dev`:
+5. Crie a tabela com a coluna `dev`:
    ```bash
    php artisan make:migration add_dev_to_products_table --table=products
    ```
 
-6. Execute as migrações:
+6. Edite a migração gerada para adicionar a coluna `dev`:
+   ```php
+   <?php
+
+   use Illuminate\Database\Migrations\Migration;
+   use Illuminate\Database\Schema\Blueprint;
+   use Illuminate\Support\Facades\Schema;
+
+   class AddDevToProductsTable extends Migration
+   {
+       /**
+        * Run the migrations.
+        *
+        * @return void
+        */
+       public function up()
+       {
+           Schema::table('products', function (Blueprint $table) {
+               $table->string('dev')->nullable(); // Adiciona a coluna 'dev'
+           });
+       }
+
+       /**
+        * Reverse the migrations.
+        *
+        * @return void
+        */
+       public function down()
+       {
+           Schema::table('products', function (Blueprint $table) {
+               $table->dropColumn('dev'); // Remove a coluna 'dev'
+           });
+       }
+   }
+   ```
+
+7. Execute as migrações:
    ```bash
    php artisan migrate
    ```
 
-7. Inicie o servidor:
+8. Inicie o servidor:
    ```bash
-   npm start
+   php artisan serve
    ```
 
 ## Rotas da API
@@ -161,7 +197,15 @@ Utilizamos JWT para autenticação de usuários. As rotas são as seguintes:
   - Exemplo de response:
     ```json
     {
-      "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzIyMzUzMTUzLCJleHAiOjE3MjIzNTY3NTMsIm5iZiI6MTcyMjM1MzE1MywianRpIjoicWJ1QVJnckVJVVVFdG9ZcyIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.JetS6cDWfoeztfoVe2NmCYPRgj4KJTKiKBPFKvtBW3M"
+      "message": "Usuário cadastrado com sucesso.",
+      "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzIyMzUzMTUzLCJleHAiOjE3MjIzNTY3NTMsIm5iZiI6MTcyMjM1MzE1MywianRpIjoicWJ1QVJnckVJVVVFdG9ZcyIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.JetS6cDWfoeztfoVe2NmCYPRgj4KJTKiKBPFKvtBW3M",
+      "user": {
+        "id": 1,
+        "name": "marcos",
+        "email": "marcos@email.com",
+        "created_at": "2024-07-30T14:53:10.000000Z",
+        "updated_at": "2024-07-30T14:53:10.000000Z"
+      }
     }
     ```
 
@@ -192,4 +236,11 @@ Utilizamos JWT para autenticação de usuários. As rotas são as seguintes:
 Este projeto foi desenvolvido como um desafio, para proporcionar um sistema de autenticação seguro utilizando JWT. Sinta-se à vontade para contribuir e melhorar este projeto.
 ```
 
-Agora o `README.md` inclui informações detalhadas sobre como registrar e autenticar usuários usando JWT, com exemplos de requests e responses. Se precisar de mais alguma alteração, é só avisar!
+### Resumo
+
+1. **Adiciona uma coluna `dev`** na tabela `products` usando migrações.
+2. **Configura e documenta** o sistema de autenticação JWT.
+3. **Atualiza o README** com detalhes sobre instalação, configuração, rotas da API e exemplos de requests/responses.
+
+Se precisar de mais alguma coisa ou tiver alguma dúvida, é só falar!
+
