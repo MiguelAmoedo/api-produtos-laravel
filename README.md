@@ -39,7 +39,7 @@ Este é um sistema de gestão de produtos desenvolvido com Laravel no backend e 
    php artisan key:generate
    ```
 
-3. Configure o banco de dados no arquivo `.env`:
+3. Configure o banco de dados no arquivo `.env` ou COPIE: `.env.example`!:
 
    ```
    DB_CONNECTION=mysql
