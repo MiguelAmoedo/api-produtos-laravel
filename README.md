@@ -151,11 +151,50 @@ json
 
 Utilizamos JWT para autenticação de usuários. As rotas são as seguintes:
 
-- **Registrar:** POST /register
-  - Registra um novo usuário.
+Utilizamos JWT para autenticação de usuários. As rotas são as seguintes:
 
-- **Login:** POST /login
+- **Registrar:** `POST /register`
+  - Registra um novo usuário.
+  - Exemplo de request:
+    ```json
+    {
+      "name": "marcos",
+      "email": "marcos@email.com",
+      "password": "passweord123",
+      "password_confirmation": "passweord123"
+    }
+    ```
+  - Exemplo de response:
+    ```json
+    {
+      "message": "Usuário cadastrado com sucesso.",
+      "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzIyMzUzMTUzLCJleHAiOjE3MjIzNTY3NTMsIm5iZiI6MTcyMjM1MzE1MywianRpIjoicWJ1QVJnckVJVVVFdG9ZcyIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.JetS6cDWfoeztfoVe2NmCYPRgj4KJTKiKBPFKvtBW3M",
+      "user": {
+        "id": 1,
+        "name": "marcos",
+        "email": "marcos@email.com",
+        "created_at": "2024-07-30T14:53:10.000000Z",
+        "updated_at": "2024-07-30T14:53:10.000000Z"
+      }
+    }
+    ```
+
+- **Login:** `POST /login`
   - Autentica um usuário e retorna um token JWT.
+  - Exemplo de request:
+    ```json
+    {
+      "email": "marcos@email.com",
+      "password": "passweord123"
+    }
+    ```
+  - Exemplo de response:
+    ```json
+    {
+      "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzIyMzUzMTUzLCJleHAiOjE3MjIzNTY3NTMsIm5iZiI6MTcyMjM1MzE1MywianRpIjoicWJ1QVJnckVJVVVFdG9ZcyIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.JetS6cDWfoeztfoVe2NmCYPRgj4KJTKiKBPFKvtBW3M"
+    }
+    ```
+
 
 - **Logout:** POST /logout
   - Realiza o logout do usuário autenticado (requer token JWT).
