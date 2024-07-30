@@ -51,13 +51,17 @@ Este é um sistema de gestão de produtos desenvolvido com Laravel no backend e 
    ```bash
    php artisan config:cache
    ```
+5. Crie no banco uma tabela ou coloque comando abaixo::
+   ```bash
+    php artisan make:migration add_dev_to_products_tabl
+   ```
 
-5. Execute as migrações:
+7. Execute as migrações:
    ```bash
    php artisan migrate
    ```
 
-6. Inicie o servidor:
+7. Inicie o servidor:
    ```bash
    php artisan serve
    ```
