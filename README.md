@@ -71,7 +71,7 @@ Este é um sistema de gestão de produtos desenvolvido com Laravel no backend e 
 7. Inicie o servidor:
    
    ```bash
-   php artisan serve
+   npm start
    ```
 
 ## Rotas da API
