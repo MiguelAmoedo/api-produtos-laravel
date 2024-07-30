@@ -1,3 +1,8 @@
+Claro! Vamos atualizar o `README.md` com as informações adicionais sobre as rotas de autenticação JWT, incluindo exemplos de requests e responses para as rotas de registro e login.
+
+Aqui está a versão atualizada:
+
+```markdown
 # Sistema de Gestão de Produtos
 
 ## Visão Geral
@@ -51,19 +56,20 @@ Este é um sistema de gestão de produtos desenvolvido com Laravel no backend e 
    ```bash
    php artisan config:cache
    ```
-5. Crie no banco uma tabela ou coloque comando abaixo::
+
+5. Crie a migração para adicionar a coluna `dev`:
    ```bash
-    php artisan make:migration add_dev_to_products_tabl
+   php artisan make:migration add_dev_to_products_table --table=products
    ```
 
-7. Execute as migrações:
+6. Execute as migrações:
    ```bash
    php artisan migrate
    ```
 
 7. Inicie o servidor:
    ```bash
-   php artisan serve
+   npm start
    ```
 
 ## Rotas da API
@@ -72,7 +78,7 @@ A API está disponível na URL: `http://127.0.0.1:8000/api/`
 
 ### Categorias
 
-- **Cadastrar primeiro Categoria:** `POST /categories`
+- **Cadastrar Categoria:** `POST /categories`
   - Cadastra uma nova categoria.
   - Exemplo de request:
     ```json
@@ -89,6 +95,7 @@ A API está disponível na URL: `http://127.0.0.1:8000/api/`
       "id": 1
     }
     ```
+
 ### Produtos
 
 - **Listar Produtos:** `GET /products`
@@ -136,17 +143,43 @@ A API está disponível na URL: `http://127.0.0.1:8000/api/`
 - **Deletar Produto:** `DELETE /products/{id}`
   - Deleta um produto existente.
 
-
-
 ### Sistema de Autenticação (JWT)
 
 Utilizamos JWT para autenticação de usuários. As rotas são as seguintes:
 
 - **Registrar:** `POST /register`
   - Registra um novo usuário.
+  - Exemplo de request:
+    ```json
+    {
+      "name": "marcos",
+      "email": "marcos@email.com",
+      "password": "passweord123",
+      "password_confirmation": "passweord123"
+    }
+    ```
+  - Exemplo de response:
+    ```json
+    {
+      "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzIyMzUzMTUzLCJleHAiOjE3MjIzNTY3NTMsIm5iZiI6MTcyMjM1MzE1MywianRpIjoicWJ1QVJnckVJVVVFdG9ZcyIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.JetS6cDWfoeztfoVe2NmCYPRgj4KJTKiKBPFKvtBW3M"
+    }
+    ```
 
 - **Login:** `POST /login`
   - Autentica um usuário e retorna um token JWT.
+  - Exemplo de request:
+    ```json
+    {
+      "email": "marcos@email.com",
+      "password": "passweord123"
+    }
+    ```
+  - Exemplo de response:
+    ```json
+    {
+      "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzIyMzUzMTUzLCJleHAiOjE3MjIzNTY3NTMsIm5iZiI6MTcyMjM1MzE1MywianRpIjoicWJ1QVJnckVJVVVFdG9ZcyIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.JetS6cDWfoeztfoVe2NmCYPRgj4KJTKiKBPFKvtBW3M"
+    }
+    ```
 
 - **Logout:** `POST /logout`
   - Realiza o logout do usuário autenticado (requer token JWT).
@@ -157,7 +190,6 @@ Utilizamos JWT para autenticação de usuários. As rotas são as seguintes:
 ## Considerações Finais
 
 Este projeto foi desenvolvido como um desafio, para proporcionar um sistema de autenticação seguro utilizando JWT. Sinta-se à vontade para contribuir e melhorar este projeto.
+```
 
----
-
-Este README cobre a configuração do ambiente de desenvolvimento, instalação das dependências, execução do servidor e as principais rotas da API, incluindo o sistema de autenticação JWT.
+Agora o `README.md` inclui informações detalhadas sobre como registrar e autenticar usuários usando JWT, com exemplos de requests e responses. Se precisar de mais alguma alteração, é só avisar!
